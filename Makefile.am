@@ -202,6 +202,14 @@ scrnsaver_HEADERS = \
 scrnsaverprotopkgconfigdir = $(datadir)/pkgconfig
 scrnsaverprotopkgconfig_DATA = scrnsaverproto.pc
 
+myextensiondir = $(includedir)/X11/extensions
+myextension_HEADERS = \
+	include/X11/extensions/myextension.h \
+	include/X11/extensions/myextensionproto.h
+
+myextensionprotopkgconfigdir = $(datadir)/pkgconfig
+myextensionprotopkgconfig_DATA = myextensionproto.pc
+
 videodir = $(includedir)/X11/extensions
 video_HEADERS = \
 	include/X11/extensions/Xv.h \

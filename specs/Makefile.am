@@ -4,6 +4,7 @@ SUBDIRS = \
     kbproto \
     recordproto \
     scrnsaverproto \
+    myextensionproto \
     xcmiscproto \
     xextproto \
     xproto
