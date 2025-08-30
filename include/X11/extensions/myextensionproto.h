@@ -43,33 +43,6 @@ typedef struct {
 } xMyextensionQueryVersionReply;
 #define sz_xMyextensionQueryVersionReply	32
 
-#define X_MyextensionQueryInfo   1
-
-/* stuff related to `MyextensionQueryInfo` is not used */
-typedef struct _MyextensionQueryInfo {
-    CARD8 reqType;		/* always MyextensionReqCode */
-    CARD8 saverReqType;		/* always X_MyextensionQueryInfo */
-    CARD16 length;
-    Drawable drawable;
-} xMyextensionQueryInfoReq;
-#define sz_xMyextensionQueryInfoReq	8
-
-typedef struct {
-    CARD8 type;			/* X_Reply */
-    BYTE state;			/* Off, On */
-    CARD16 sequenceNumber;
-    CARD32 length;
-    Window window;
-    CARD32 tilOrSince;
-    CARD32 idle;
-    CARD32 eventMask;
-    BYTE kind;			/* Blanked, Internal, External */
-    CARD8 pad0;
-    CARD16 pad1;
-    CARD32 pad2;
-} xMyextensionQueryInfoReply;
-#define sz_xMyextensionQueryInfoReply	32
-
 #define X_MyextensionLockScreen 2
 typedef struct _xMyextensionLockScreen {
     CARD8  major_opcode;
@@ -84,11 +57,7 @@ typedef struct {
     CARD16     sequence;
     CARD32     length;
     Window     saver_window;
-    CARD32     ms_until_server;
-    CARD32     ms_since_user_input;
-    CARD32     event_mask;
-    BYTE       kind;
-    CARD8      pad0[7];
+    CARD8      pad0[20];
 } xMyextensionLockScreenReply;
 #define sz_xMyextensionLockScreenReply	32 /* might not be the correct size
                                             * no idea how to calculate it */
@@ -110,30 +79,11 @@ typedef struct {
     CARD16     sequence;
     CARD32     length;
     Window     saver_window;
-    CARD32     ms_until_server;
-    CARD32     ms_since_user_input;
-    CARD32     event_mask;
-    CARD8      kind;
-    CARD8      pad0[7];
+    CARD8      pad0[20];
 } xMyextensionUnlockScreenReply;
 #define sz_xMyextensionUnlockScreenReply	32 /* might not be the correct size
                                                 * no idea how to calculate it */
 
-typedef struct _MyextensionNotify {
-    CARD8 type;			/* always eventBase + MyextensionNotify */
-    BYTE state;			/* off, on, cycle */
-    CARD16 sequenceNumber;
-    Time timestamp;
-    Window root;
-    Window window;		/* screen saver window */
-    BYTE kind;			/* blanked, internal, external */
-    BYTE forced;
-    CARD16 pad0;
-    CARD32 pad1;
-    CARD32 pad2;
-    CARD32 pad3;
-} xMyextensionNotifyEvent;
-#define sz_xMyextensionNotifyEvent	32
 
 #undef Window
 #undef Drawable
