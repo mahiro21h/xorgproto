@@ -84,6 +84,47 @@ typedef struct {
 #define sz_xMyextensionUnlockScreenReply	32 /* might not be the correct size
                                                 * no idea how to calculate it */
 
+#define X_MyextensionRegisterScreenLocker 4
+typedef struct _xMyextensionRegisterScreenLocker {
+    CARD8 reqType;		/* always MyextensionReqCode */
+    CARD8 saverReqType;		/* always X_MyextensionQueryVersion */
+    CARD16 length;
+    int32_t  pid;
+    CARD32 exec_path_len;
+    CARD8 pad0[20];
+} xMyextensionRegisterScreenLockerReq;
+#define sz_xMyextensionRegisterScreenLockerReq	32
+
+typedef struct {
+    CARD8      type;
+    CARD8      response;
+    CARD16     sequenceNumber;
+    CARD32     length;
+    CARD32     exec_path_len; /* unused */
+    CARD8 pad0[20];
+} xMyextensionRegisterScreenLockerReply;
+#define sz_xMyextensionRegisterScreenLockerReply	32 /* might not be the correct size
+                                                        * no idea how to calculate it */
+
+#define X_MyextensionUnregisterScreenLocker   5
+
+typedef struct _MyextensionUnregisterScreenLocker {
+    CARD8  reqType;		/* always MyextensionReqCode */
+    CARD8  saverReqType;		/* always X_MyextensionQueryVersion */
+    CARD16 length;
+} xMyextensionUnregisterScreenLockerReq;
+#define sz_xMyextensionUnregisterScreenLockerReq	8
+
+typedef struct {
+    CARD8  type;
+    CARD8  response;
+    CARD16 sequenceNumber;
+    CARD32 length;
+    Window saver_window;
+    CARD8  pad0[20];
+} xMyextensionUnregisterScreenLockerReply;
+#define sz_xMyextensionUnregisterScreenLockerReply	32
+
 
 #undef Window
 #undef Drawable
