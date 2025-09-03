@@ -126,6 +126,41 @@ typedef struct {
 #define sz_xMyextensionUnregisterScreenLockerReply	32
 
 
+#define X_MyextensionCreateWindow   6
+
+typedef struct _MyextensionCreateWindow {
+    CARD8  reqType;		/* always MyextensionReqCode */
+    CARD8  saverReqType;		/* always X_MyextensionQueryVersion */
+    CARD16 length;
+    Window parent;
+    VisualID visualid;
+    CARD32 background_pixel_len;
+    CARD8 pad0[20];
+} xMyextensionCreateWindowReq;
+#define sz_xMyextensionCreateWindowReq	16
+
+typedef struct {
+    CARD8  type;
+    CARD8  response;
+    CARD16 sequenceNumber;
+    CARD32 length;
+    Window locker_window;
+    CARD8  pad0[20];
+} xMyextensionCreateWindowReply;
+#define sz_xMyextensionCreateWindowReply	32
+
+
+#define X_MyextensionDestroyWindow   7
+
+typedef struct _MyextensionDestroyWindow {
+    CARD8  reqType;		/* always MyextensionReqCode */
+    CARD8  saverReqType;		/* always X_MyextensionQueryVersion */
+    CARD16 length;
+    Window locker_window;
+} xMyextensionDestroyWindowReq;
+#define sz_xMyextensionDestroyWindowReq	16
+
+
 #undef Window
 #undef Drawable
 #undef Font
